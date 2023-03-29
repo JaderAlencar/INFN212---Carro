@@ -9,6 +9,7 @@ package Model;
  * @author 182120009
  */
 public class Carro {
+
     private String marca;
     private String modelo;
     private int anoFab;
@@ -17,11 +18,12 @@ public class Carro {
     private String tpCambio;
     private String combustivel;
     private Pessoa proprietario; //agregação da classe model pessoa com o carro
+    private String placa;
 
     public Carro() {
     }
 
-    public Carro(String marca, String modelo, int anoFab, int anoMod, String cor, String tpCambio, String combustivel, Pessoa proprietario) {
+    public Carro(String marca, String modelo, int anoFab, int anoMod, String cor, String tpCambio, String combustivel, Pessoa proprietario, String placa) {
         this.marca = marca;
         this.modelo = modelo;
         this.anoFab = anoFab;
@@ -30,6 +32,7 @@ public class Carro {
         this.tpCambio = tpCambio;
         this.combustivel = combustivel;
         this.proprietario = proprietario;
+        this.placa = placa;
     }
 
     public String getMarca() {
@@ -96,13 +99,23 @@ public class Carro {
         this.proprietario = proprietario;
     }
 
-    @Override
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+        @Override
     public String toString() {
-        return "Carro{" + "marca=" + marca + ", modelo=" + modelo + ", anoFab=" + anoFab + ", anoMod=" + anoMod + ", cor=" + cor + ", tpCambio=" + tpCambio + ", combustivel=" + combustivel + ", proprietario=" + proprietario + '}';
+        return "\n---" + "\nMarca:\t" + marca + "\nModelo:\t" + modelo
+                + "\nAno Fab.:\t" + anoFab + "\nAno Mod.:\t" + anoMod + "\nCor:\t\t" + cor
+                + "\nTipo Cambio:\t" + tpCambio + "\nCombustivel:\t" + combustivel
+                + "\nProprietário:\t" + proprietario.getNome() + "\nPlaca:\t" + placa;
+        
     }
     
-    
-            
-            
-}
-//Fim da classe Carro
+
+    }
+//Fim da classe Carr}o

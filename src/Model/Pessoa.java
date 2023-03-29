@@ -68,7 +68,8 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "idPessoa=" + idPessoa + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + '}';
+        return "\n---" + "\nidPessoa:\t" + idPessoa + "\nnome:\t" + nome 
+                + "\ncpf:\t" + cpf + "\nendereco:\t" + endereco + "\ntelefone:\t" + telefone ;
     }
     
     
