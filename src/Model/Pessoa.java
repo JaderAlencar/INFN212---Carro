@@ -18,6 +18,14 @@ public class Pessoa {
     public Pessoa() {
     }
 
+    /**
+     * Construtor da Classe Pessoa inicializando todos os atributos
+     * @param idPessoa
+     * @param nome
+     * @param cpf
+     * @param endereco
+     * @param telefone 
+     */
     public Pessoa(int idPessoa, String nome, String cpf, String endereco, String telefone) {
         this.idPessoa = idPessoa;
         this.nome = nome;
@@ -26,10 +34,22 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
+    public Pessoa(String idPessoa, String nome, String cpf, String endereco, String telefone) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * Método getIdPessoa pega o valor do atributo
+     * @return 
+     */
     public int getIdPessoa() {
         return idPessoa;
     }
 
+    /**
+     * Método setIdPessoa seta valor no atributo id da Pessoa
+     * @param idPessoa 
+     */
     public void setIdPessoa(int idPessoa) {
         this.idPessoa = idPessoa;
     }
@@ -71,7 +91,10 @@ public class Pessoa {
         return "\n---" + "\nidPessoa:\t" + idPessoa + "\nnome:\t" + nome 
                 + "\ncpf:\t" + cpf + "\nendereco:\t" + endereco + "\ntelefone:\t" + telefone ;
     }
-    
+
+    public Pessoa getPessoaCPF(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }//fim classe

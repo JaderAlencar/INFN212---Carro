@@ -15,84 +15,71 @@ public class CPessoa {
 
     ArrayList<Pessoa> pessoas = new ArrayList<>();
     int idPessoa = 1;
-
+    
     /**
-     * //Autoincrement idPessoa
-     *
-     * @return
+     * Autoincrement idPessoa
+     * @return 
      */
-    public int geraID() {
+    public int geraID(){
         return this.idPessoa++;
     }
 
     /**
-     * //Método addPessoa adiciona pessoa no ArrayList pessoas
+     * Método addPessoa adiciona Pessoa no ArrayList pessoas
      *
      * @param p
      */
     public void addPessoa(Pessoa p) {
         this.pessoas.add(p);
-
     }
 
     /**
-     * //Método removePessoa remove pessoas do arraylist pessoas
+     * Método removePessoa remove Pessoa do ArrayList pessoas
      *
-     * @param p
+     * @param pes
      */
-    public void removePessoa(Pessoa p) {
-        this.pessoas.remove(p);
-
+    public void removePessoa(Pessoa pes) {
+        this.pessoas.remove(pes);
     }
 
-    public ArrayList<Pessoa> getPesssoas() {
+    public ArrayList<Pessoa> getPessoas() {
         return this.pessoas;
-
     }
 
     /**
-     * // Metodo getPessoaCPF retorna uma pesssoa caso encontre correspondência
-     * no CPF do ArrayList pessoas, caso contrario.
-     *
+     * Método getPessoaCPF retorna uma Pessoa caso encontre 
+     * correspondência no CPF do ArrayList pessoas, caso contrário
+     * retorna null.
      * @param CPF
-     * @return
+     * @return 
      */
     public Pessoa getPessoaCPF(String CPF) {
-
         Pessoa p = null;
-
         for (Pessoa pes : pessoas) {
             if (pes.getCpf().equals(CPF)) {
                 p = pes;
                 break;
-
             }
-
-        }
-
+        }//fim foreach
         return p;
-
-    }//fim foreach
-
-    public void mockPessoas() {
+    }
+    
+    public void mockPessoas(){
         Pessoa p1 = new Pessoa();
         p1.setIdPessoa(geraID());
-        p1.setCpf("27201511068");
+        p1.setCpf("30668518006");
         p1.setNome("Juvenal das Candongas");
-        p1.setTelefone("519998884142");
-        p1.setEndereco("Eurico Lara");
+        p1.setTelefone("51999889988");
+        p1.setEndereco("Rua das Margaridas");
         addPessoa(p1);
-
         Pessoa p2 = new Pessoa();
         p2.setIdPessoa(geraID());
-        p2.setCpf("23185266056");
+        p2.setCpf("85606196077");
         p2.setNome("Madalena Espirito Santo");
-        p2.setTelefone("51985362287");
-        p2.setEndereco("Rua sem saida");
+        p2.setTelefone("51988998899");
+        p2.setEndereco("Rua sem saída");
         addPessoa(p2);
         
-        
-
     }
-
-}//fim da classe controller
+    
+}//fim classe controller

@@ -9,7 +9,7 @@ package Model;
  * @author 182120009
  */
 public class Carro {
-
+    private String placa;
     private String marca;
     private String modelo;
     private int anoFab;
@@ -17,13 +17,13 @@ public class Carro {
     private String cor;
     private String tpCambio;
     private String combustivel;
-    private Pessoa proprietario; //agregação da classe model pessoa com o carro
-    private String placa;
+    private Pessoa proprietario; //agregação da classe model Pessoa com Carro
 
     public Carro() {
     }
 
-    public Carro(String marca, String modelo, int anoFab, int anoMod, String cor, String tpCambio, String combustivel, Pessoa proprietario, String placa) {
+    public Carro(String placa, String marca, String modelo, int anoFab, int anoMod, String cor, String tpCambio, String combustivel, Pessoa proprietario) {
+        this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
         this.anoFab = anoFab;
@@ -32,8 +32,17 @@ public class Carro {
         this.tpCambio = tpCambio;
         this.combustivel = combustivel;
         this.proprietario = proprietario;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
+    
+    
 
     public String getMarca() {
         return marca;
@@ -99,23 +108,12 @@ public class Carro {
         this.proprietario = proprietario;
     }
 
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-        @Override
+    @Override
     public String toString() {
-        return "\n---" + "\nMarca:\t" + marca + "\nModelo:\t" + modelo
-                + "\nAno Fab.:\t" + anoFab + "\nAno Mod.:\t" + anoMod + "\nCor:\t\t" + cor
-                + "\nTipo Cambio:\t" + tpCambio + "\nCombustivel:\t" + combustivel
-                + "\nProprietário:\t" + proprietario.getNome() + "\nPlaca:\t" + placa;
+        return "\n---" + "\nPlaca:\t" + placa + "\nMarca:\t" + marca + "\nModelo:\t" + modelo 
+                + "\nAno Fab.:\t" + anoFab + "\nAno Mod.:\t" + anoMod + "\nCor:\t\t" + cor 
+                + "\nTipo Cambio:\t" + tpCambio + "\nCombustivel:\t" + combustivel 
+                + "\nProprietário:\t" + proprietario.getNome();
+    }
         
-    }
-    
-
-    }
-//Fim da classe Carr}o
+}//fim Classe Carro
