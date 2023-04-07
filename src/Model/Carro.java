@@ -34,6 +34,10 @@ public class Carro {
         this.proprietario = proprietario;
     }
 
+    public Carro(String placa_marca_modelo_anoFab_anoMod_cor_tpCa) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getPlaca() {
         return placa;
     }

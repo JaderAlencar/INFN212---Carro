@@ -52,7 +52,7 @@ public class INF3N212Carro {
 
                             case 1:
                                 System.out.println("-- Cadastrar --");
-                                if (opSM == 1) {
+                                if (opM == 1) {
                                     cadastrarPessoa();
 
                                 } else {
@@ -198,7 +198,7 @@ public class INF3N212Carro {
                 System.out.println("2 - Cancelar cadastro");
                 System.out.println("Digite aqui: ");
                 int op = leiaNumInt();
-                
+
                 if (op == 2) {
                     return;
                 }
@@ -222,8 +222,92 @@ public class INF3N212Carro {
     }
 
     private static void cadastrarCarro() {
-        System.out.println("Carro");
-    }
+        System.out.println("-- Cadastrar Carro --");
+        String placa;
+        String marca;
+        String modelo;
+        int anoFab;
+        int anoMod;
+        String cor;
+        String tpCambio;
+        String combustivel;
+        Pessoa proprietario;
+        boolean pCarro = true;
+
+        do {
+            System.out.println("Informe a Placa: ");
+            placa = leia.nextLine();
+            placa = placa.toUpperCase();
+            pCarro = Validadores.validarPlaca(placa);
+            if (pCarro) {
+                Carro carro = cadCarro.getCarroPlaca(placa);
+                if (carro == null) {
+                    //segue fluxo de cadastro
+                    System.out.println("Informe a marca: ");
+                    marca = leia.nextLine();
+                    System.out.println("Informe o modelo: ");
+                    modelo = leia.nextLine();
+                    do {
+                        System.out.println("Informe o ano fab.: ");
+                        anoFab = leiaNumInt();
+                        System.out.println("Informe o ano modelo: ");
+                        anoMod = leiaNumInt();
+                        if (!Validadores.validarAnoCarro(anoFab, anoMod)) {
+                            System.out.println("Ano inválido, tente novamente! ");
+
+                        }
+
+                    } while (!Validadores.validarAnoCarro(anoFab, anoMod));
+
+                    System.out.println("Informe a cor: ");
+                    cor = leia.nextLine();
+
+                    System.out.println("Informe tipo de câmbio: ");
+                    tpCambio = leia.nextLine();
+
+                    System.out.println("Informe o combustível: ");
+                    combustivel = leia.nextLine();
+                    do {
+                        System.out.println("Informe o CPF do proprietário: ");
+                        String cpf = leia.nextLine();
+                        proprietario = cadPessoa.getPessoaCPF(cpf);
+                        if (proprietario == null) {
+                            System.out.println("CPF não cadastrado, "
+                                    + "Tente novamente! ");
+
+                        } else {
+                            System.out.println("Pessoa selecionada:"
+                                    + proprietario.getNome());
+                            System.out.println("Este é o propretário? ");
+                            System.out.println("1 - Sim | 2 - Não ");
+                            System.out.println("Digite aqui: ");
+                            int op = leiaNumInt();
+                            if (op == 2) {
+                                System.out.println("Tente outro CPF. ");
+                                proprietario = null;
+
+                            }
+                        }
+                    } while (proprietario == null);
+                    pCarro = false;
+                    Carro c = new Carro(placa, marca, modelo, anoFab, anoMod, cor, tpCambio, combustivel, proprietario);
+                    cadCarro.addCarro(c);
+                    System.out.println("Carro cadastrado com sucesso! ");
+
+                } else {
+                    System.out.println("Placa já cadastrada. ");
+                    pCarro = false;
+
+                }
+
+            } else {
+                System.out.println("Placa inválida! Tente novamente!");
+                pCarro = true;
+            }
+
+        } while (pCarro);
+
+    }//Fim Casdastro Carro
 
     private static void editarPessoa() {
         System.out.println("-- Editar Pessoa --");
@@ -236,34 +320,42 @@ public class INF3N212Carro {
             if (isCPF) {
                 Pessoa p = cadPessoa.getPessoaCPF(cpf);
                 if (p != null) {
-                    System.out.println("Quais dados de " + p.getNome() + "deseja alterar?");
-                    System.out.println("1 - Nome");
-                    System.out.println("2 - Endereço");
-                    System.out.println("3 - Telefone");
-                    System.out.println("4 - Todos");
-                    System.out.println("0 - Cancelar");
-                    System.out.println("Digite aqui:");
-                    int op = leiaNumInt();
-                    if (op == 1 || op == 4) {
-                        System.out.println("Informe o novo nome:");
-                        p.setNome(leia.nextLine());
-                        
-                    }
-                    if (op == 2 || op == 4) {
-                        System.out.println("Informe o novo endereço:");
-                        p.setEndereco(leia.nextLine());
-                        
-                    }
-                    if (op == 3 || op == 4) {
-                        System.out.println("Informe o novo telefone:");
-                        p.setTelefone(leia.nextLine());
+                    do {
+                        System.out.println("Quais dados de " + p.getNome() + " deseja alterar?");
+                        System.out.println("1 - Nome");
+                        System.out.println("2 - Endereço");
+                        System.out.println("3 - Telefone");
+                        System.out.println("4 - Todos");
+                        System.out.println("0 - Voltar");
+                        System.out.println("Digite aqui:");
+                        int op = leiaNumInt();
+                        if (op == 1 || op == 4) {
+                            System.out.println("Informe o novo nome:");
+                            p.setNome(leia.nextLine());
 
-                    }
-                    if (op == 0) {
-                        System.out.println("Operação cancelada pelo usuário!");
-                        isCPF = false;
-                    }
-                    
+                        }
+                        if (op == 2 || op == 4) {
+                            System.out.println("Informe o novo endereço:");
+                            p.setEndereco(leia.nextLine());
+
+                        }
+                        if (op == 3 || op == 4) {
+                            System.out.println("Informe o novo telefone:");
+                            p.setTelefone(leia.nextLine());
+
+                        }
+                        if (op == 0) {
+                            System.out.println("Operação cancelada pelo usuário!");
+                            isCPF = false;
+
+                        }
+
+                        if (op < 0 || op > 4) {
+                            System.out.println("Opção inválida, tente novamente!");
+
+                        }
+                    } while (isCPF);
+
                     //editar pessoa
                 } else {
                     System.out.println("CPF não cadastrado");
@@ -347,6 +439,7 @@ public class INF3N212Carro {
             } else {
                 System.out.println("CPF inválido!"
                         + "\nTente novamente. ");
+                delCPF = true;
             }
 
         } while (delCPF);
@@ -354,7 +447,30 @@ public class INF3N212Carro {
     }//Fim do deletarPessoa
 
     private static void deletarCarro() {
-        System.out.println("Carro");
+        System.out.println(" -- Deletar Carro --");
+        boolean delPlaca = false;
+
+        do {
+            System.out.println("Informe a placa do carro que deseja deletar: ");
+            String placa = leia.nextLine();
+            delPlaca = placa.toUpperCase();
+            delPlaca = Validadores.validarPlaca(placa);
+            int op = leiaNumInt();
+
+            if (op == 1) {
+                
+                cadCarro.removeCarro(c);
+                System.out.println("Carro deletado com sucesso! ");
+                delPlaca = false;
+
+
+
+                }
+
+            }
+
+        } while (true);
+
     }
 
 }//Fim da classe
